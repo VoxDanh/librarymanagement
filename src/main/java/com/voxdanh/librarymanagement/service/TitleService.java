@@ -68,14 +68,14 @@ public class TitleService {
         return titleRepository.findAll();
     }
     public List<Title> findTitleByName(String name){
-        return titleRepository.findByName(name);
-    } //chi khi dung ten va hoa thuong dung (can them hoac fix chi can 1 doan van ban)
+        return titleRepository.findByNameContainingIgnoreCase(name);
+    }
     public List<Title> findTitleByAuthor(String author){
-        return titleRepository.findByAuthor(author);
-    }//chi khi dung ten va hoa thuong dung ( can fix hoa thuong deu duoc)
+        return titleRepository.findByAuthorContainingIgnoreCase(author);
+    }
     public List<Title> findTitleByPublisher(String publisher){
-        return titleRepository.findByPublisher(publisher);
-    }//chi khi dung ten va hoa thuong dung( can fix hoa thuong deu duoc)
+        return titleRepository.findByPublisherContainingIgnoreCase(publisher);
+    }
     public List<Title> findTitleByReleaseDateBetween(LocalDate start,LocalDate end){
         return titleRepository.findByReleaseDateBetween(start,end);
     }

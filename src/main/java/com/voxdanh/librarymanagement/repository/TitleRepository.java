@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface  TitleRepository extends JpaRepository<Title,Long> {
-    List<Title> findByName(String name);
-    List<Title> findByAuthor(String author);
-    List<Title> findByPublisher(String publisher);
+    List<Title> findByNameContainingIgnoreCase(String name);
+    List<Title> findByAuthorContainingIgnoreCase(String author);
+    List<Title> findByPublisherContainingIgnoreCase(String publisher);
     List<Title> findByReleaseDateBetween(LocalDate startDate,LocalDate endDate);
 }
