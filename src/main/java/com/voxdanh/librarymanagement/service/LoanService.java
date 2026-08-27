@@ -48,6 +48,15 @@ public class LoanService {
         }
         return returnRecord;
     }
+    public Book returnBook(LoanDetail loanDetail){ // xem xet cach lay detail de xac nhan tra
+        loanDetail.setReturnDate(LocalDate.now());
+        loanDetail.setReturnStatus(true);
+        loanDetailRepository.save(loanDetail);
+        Book book=loanDetail.getBook();
+        book.setStatus(true);
+        bookRepository.save(book);
+        return book;
+    }
 
 
 }
