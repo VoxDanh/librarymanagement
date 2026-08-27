@@ -32,6 +32,7 @@ public class TitleService {
 
     //xoa tac pham
     public void deleteTitle(Long id){
+        bookRepository.deleteAllbyTitle(id);
         titleRepository.deleteById(id);
     }
     //cap nhat tac pham
@@ -60,8 +61,7 @@ public class TitleService {
         Title title=titleRepository.findById(id)
                 .orElseThrow(()->new RuntimeException("Khong co sach hop le"));
         title.setReleaseDate(releaseDate);
-        Title updateTitle=titleRepository.save(title);
-        return updateTitle;
+        return titleRepository.save(title);
     }
     //truy van tac pham
     public List<Title> allTilte(){
@@ -69,16 +69,20 @@ public class TitleService {
     }
     public List<Title> findTitleByName(String name){
         return titleRepository.findByName(name);
-    }
+    } //chi khi dung ten va hoa thuong dung (can them hoac fix chi can 1 doan van ban)
     public List<Title> findTitleByAuthor(String author){
         return titleRepository.findByAuthor(author);
-    }
+    }//chi khi dung ten va hoa thuong dung ( can fix hoa thuong deu duoc)
     public List<Title> findTitleByPublisher(String publisher){
         return titleRepository.findByPublisher(publisher);
-    }
+    }//chi khi dung ten va hoa thuong dung( can fix hoa thuong deu duoc)
     public List<Title> findTitleByReleaseDateBetween(LocalDate start,LocalDate end){
         return titleRepository.findByReleaseDateBetween(start,end);
     }
+    public int countBookOfTitle(Long id){
+        return bookRepository.countByTitle(id);
+    }
+
 
 
 

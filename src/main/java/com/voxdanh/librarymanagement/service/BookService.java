@@ -8,6 +8,8 @@ import com.voxdanh.librarymanagement.repository.TitleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BookService {
     @Autowired
@@ -28,9 +30,22 @@ public class BookService {
         }
         return count;
     }
+    //cap nhat trang thai
+    public Boolean updateStatus(Long id,Boolean status){
+        Book book= bookRepository.findById(id)
+                .orElseThrow(()->new RuntimeException("khong co sach hop le"));
+        book.setStatus(status);
+        bookRepository.save(book);
+        return book.getStatus();
+    }
+
     //xoa sach theo id
     public void deleteBookById(Long id){
         bookRepository.deleteById(id);
+    }
+    //truy van sah
+    public List<Book> findBookByTitle(Long title){
+        return bookRepository.findByTitle(title);
     }
 
 
