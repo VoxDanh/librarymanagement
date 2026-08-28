@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface BookRepository extends JpaRepository<Book,Long> {
     int countByTitle(Long title);
-    void deleteAllbyTitle(Long title);
+    void deleteAllByTitle(Long title);
     Optional<Book> findById(Long book);
     List<Book>findByTitle(Long title);
 }

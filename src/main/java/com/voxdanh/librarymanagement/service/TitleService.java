@@ -32,7 +32,7 @@ public class TitleService {
 
     //xoa tac pham
     public void deleteTitle(Long id){
-        bookRepository.deleteAllbyTitle(id);
+        bookRepository.deleteAllByTitle(id);
         titleRepository.deleteById(id);
     }
     //cap nhat tac pham

@@ -3,10 +3,11 @@ package com.voxdanh.librarymanagement.service;
 import com.voxdanh.librarymanagement.model.Member;
 import com.voxdanh.librarymanagement.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-
+@Service
 public class MemberService {
     @Autowired
     MemberRepository memberRepository;
@@ -26,9 +27,9 @@ public class MemberService {
     }
 
 
-
+    public List<Member> findAll(){return memberRepository.findAll();}
     public List<Member> findByName(String name){
-        return memberRepository.findByNameContainingIgnoreCase(name);
+        return memberRepository.findByFullNameContainingIgnoreCase(name);
     }
     public List<Member> findByEmail(String email){
         return memberRepository.findByEmailContainingIgnoreCase(email);

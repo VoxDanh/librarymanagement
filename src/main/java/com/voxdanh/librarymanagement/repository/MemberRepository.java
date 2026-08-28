@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface MemberRepository extends JpaRepository<Member,Long> {
-    List<Member> findByNameContainingIgnoreCase(String name);
+    List<Member> findByFullNameContainingIgnoreCase(String name);
     List<Member> findByPhoneContainingIgnoreCase(String phone);
     List<Member> findByEmailContainingIgnoreCase(String email);
     List<Member> findByGender(Boolean gender);
