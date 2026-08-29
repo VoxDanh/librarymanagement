@@ -35,5 +35,22 @@ public class MemberController {
     public List<Member> getByName(String name){
         return memberService.findByName(name);
     }
+    @GetMapping("/member/phone")
+    public List<Member> getByPhone(String phone){
+        return memberService.findByPhone(phone);
+    }
+    @GetMapping("/member/email")
+    public List<Member> getByEmail(String Email){
+        return memberService.findByEmail(Email);
+    }
+    @GetMapping("/member/phone")
+    public List<Member> getByBirthDateBetween(LocalDate start,LocalDate end){
+        return memberService.findByBirthDateBetween(start,end);
+    }
+    @GetMapping("/member/gender")
+    public List<Member> getByGender(Boolean gender){
+        return memberService.findByGender(gender);
+    }
+
 
 }
