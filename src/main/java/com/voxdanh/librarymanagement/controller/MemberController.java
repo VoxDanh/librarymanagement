@@ -4,10 +4,7 @@ package com.voxdanh.librarymanagement.controller;
 import com.voxdanh.librarymanagement.model.Member;
 import com.voxdanh.librarymanagement.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -26,6 +23,10 @@ public class MemberController {
         String email=member.getEmail();
         return memberService.addMember(name,birth,gender,phone,email);
     }
+    @DeleteMapping("/member/id")
+    public void deleteById(Long id){
+        memberService.deleteMember(id);
+    }
     @GetMapping("/member")
     public List<Member> getAllMember(){
         return memberService.findAll();
@@ -34,4 +35,5 @@ public class MemberController {
     public List<Member> getByName(String name){
         return memberService.findByName(name);
     }
+
 }
